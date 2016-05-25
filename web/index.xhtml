@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Hollywood Stars</title>
+    </h:head>
+    <h:body style="width:700px">
+        <h3 style="text-align:center">Hollywood Stars</h3>
+        <br/> 
+        <f:view>
+         <h:form id="form1">  
+         <div style="text-align:center;">Select an actor to learn more about him/her<br/><br/>
+           <h:selectOneMenu value="#{actorAjaxBean.actorIndex}">
+             <f:selectItems value="#{actorInfoBean.actorMap}"/>
+             <f:ajax event="change" render="form1:actorImage form1:actorDescription"/>
+           </h:selectOneMenu>
+           <br/><br/>
+         
+           <h:graphicImage  id="actorImage" value="images/actor#{actorAjaxBean.actorIndex}.jpg"/>
+         </div>         
+          Description<br/>
+          <h:inputTextarea style=""  id="actorDescription" readonly="true" cols="60" rows="10"
+                          value="${actorAjaxBean.actorDescription}"/>
+          </h:form>
+         </f:view>
+    </h:body>
+</html>
+
